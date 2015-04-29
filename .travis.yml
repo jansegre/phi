@@ -1,16 +1,16 @@
 language: rust
+rust:
+- nightly
+- beta
 sudo: false
+before_script:
+- pip install git+https://github.com/jansegre/travis-cargo.git --user $USER && export PATH=$HOME/.local/bin:$PATH
 script:
-  - cargo build --verbose
-  - cargo test --verbose
-  - cargo doc
-after_success: |
-  [ $TRAVIS_BRANCH = master ] &&
-  [ $TRAVIS_PULL_REQUEST = false ] &&
-  echo '<meta http-equiv=refresh content=0;url=phi/index.html>' > target/doc/index.html &&
-  pip install ghp-import --user $USER &&
-  $HOME/.local/bin/ghp-import -n target/doc &&
-  git push -qf https://${TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git gh-pages
+- travis-cargo cargo build
+- travis-cargo cargo test
+- travis-cargo cargo doc
+after_success:
+- travis-cargo --only beta doc-upload
 env:
   global:
-    secure: RVNfwKeMxkzra+btEFqMzrw61Uih/gWvhtmKUp7qYTdWEyn6KIvnpsDdte/fBUOYt/tktz3upDb11DyMFugPYRMIHJSQyXprLGRy6kAebGaJR0FIWpFgp0sXccmO9eJYuIZMt5C1Rpy3pgCsvCdG9K3HiFYpXJeqLOczWplNHH0=
+    secure: ZDFBTFXJEvngxy26NMSgoD3A+OSp9OD4l0KrSIwoCbo8Qyk5rpLf6kc7gbEgK2pgW3e77VrjiSeTGYhcx+Sm2x/ZOHfSYIwcaT9siBmkSs8p21vz7L3boaf3UzOR09ebACoN9aUhZl3nNFw/eI82c+KEKcjMbN3Rb9z91LIJ47A=

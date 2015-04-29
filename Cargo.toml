@@ -10,3 +10,6 @@ documentation = "http://jansegre.com/phi/phi"
 description = """
 Light-weight physisics simulation library.
 """
+
+[features]
+unstable = []
