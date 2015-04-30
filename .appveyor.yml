@@ -1,0 +1,27 @@
+environment:
+  global:
+    rust_dir: "C:\\Program Files (x86)\\Rust"
+  matrix:
+    # TODO: would be better to specify a channel, right?
+    - rust_version: nightly
+    - rust_version: 1.0.0-beta.3
+
+platform:
+  - x86
+  - x64
+
+install:
+  - ps: |
+      If($env:platform -eq "x64") { $env:rust_arch = "x86_64" } Else { $env:rust_arch = "i686" };
+      Start-FileDownload "https://static.rust-lang.org/dist/rust-$($env:rust_version)-$($env:rust_arch)-pc-windows-gnu.exe";
+  - rust-%rust_version%-%rust_arch%-pc-windows-gnu.exe /VERYSILENT /NORESTART /DIR="%rust_dir%"
+  - set PATH=%PATH%;%rust_dir%\bin
+  - rustc -V
+  - cargo -V
+
+build_script:
+  - cargo build --verbose
+
+test_script:
+  - cargo test --verbose
+  - cargo bench --verbose
