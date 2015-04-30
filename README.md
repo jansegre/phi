@@ -4,6 +4,6 @@ __Warning: WIP__
 
 # Φ (Phi)
 
-Light-weight physisics simulation library.
+Light-weight physics engine.
 
 [Documentation](http://jansegre.com/phi/phi)
