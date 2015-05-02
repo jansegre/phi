@@ -4,11 +4,12 @@ rust:
 - beta
 sudo: false
 before_script:
-- pip install git+https://github.com/jansegre/travis-cargo.git --user $USER && export PATH=$HOME/.local/bin:$PATH
+- pip install 'travis-cargo<0.2' --user && export PATH=$HOME/.local/bin:$PATH
 script:
-- travis-cargo cargo build
-- travis-cargo cargo test
-- travis-cargo cargo doc
+- travis-cargo build
+- travis-cargo test
+- travis-cargo bench
+- travis-cargo --only beta doc
 after_success:
 - travis-cargo --only beta doc-upload
 env:
