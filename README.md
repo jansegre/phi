@@ -5,6 +5,6 @@ __Warning: WIP__
 
 # Φ (Phi)
 
-Light-weight physics engine.
+Lightweight 3D physics engine.
 
 [Documentation](http://jansegre.com/phi/phi)
