@@ -6,16 +6,19 @@
 
 /*! WIP
 
+  Φ is a lightweight 3D physics engine.
+
 */
 
-struct Phi;
+pub struct Phi;
 
 impl Phi {
-    fn new() -> Phi {
+    pub fn new() -> Phi {
         Phi
     }
 }
 
 #[test]
 fn it_works() {
+    let phi = Phi::new();
 }
