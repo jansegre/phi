@@ -4,7 +4,7 @@ rust:
 - beta
 sudo: false
 before_script:
-- pip install 'travis-cargo<0.2' --user && export PATH=$HOME/.local/bin:$PATH
+- pip install git+https://github.com/jansegre/travis-cargo.git --user && export PATH=$HOME/.local/bin:$PATH
 script:
 - travis-cargo build
 - travis-cargo test
@@ -12,6 +12,7 @@ script:
 - travis-cargo --only beta doc
 after_success:
 - travis-cargo --only beta doc-upload
+- travis-cargo coveralls
 env:
   global:
     secure: ZDFBTFXJEvngxy26NMSgoD3A+OSp9OD4l0KrSIwoCbo8Qyk5rpLf6kc7gbEgK2pgW3e77VrjiSeTGYhcx+Sm2x/ZOHfSYIwcaT9siBmkSs8p21vz7L3boaf3UzOR09ebACoN9aUhZl3nNFw/eI82c+KEKcjMbN3Rb9z91LIJ47A=
