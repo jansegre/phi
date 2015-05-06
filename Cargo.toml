@@ -13,3 +13,4 @@ Lightweight 3D physics engine.
 
 [features]
 unstable = []
+double_precision = []

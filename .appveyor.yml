@@ -1,3 +1,5 @@
+version: 0.1.0-build{build}
+
 environment:
   global:
     rust_dir: "C:\\Program Files (x86)\\Rust"
